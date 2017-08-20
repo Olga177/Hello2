@@ -9,7 +9,7 @@ driver = webdriver.Chrome()
 driver.get("https://www.theweathernetwork.com")
 
 # 3. Set waiting time
-driver.implicitly_wait(30)
+driver.implicitly_wait(20)
 
 # 4. Close the page
 driver.close()
