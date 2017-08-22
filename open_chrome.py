@@ -14,5 +14,3 @@ driver.implicitly_wait(300)
 # 4. Close the page
 driver.close()
 driver.quit()
-
-
