@@ -99,6 +99,8 @@ logout_element.click()
 print ("Headline Login is displayed on the page ", (driver.find_element_by_css_selector("h1")).text)
 
 
-# search_field.send_keys("selenium" + Keys.ENTER)
-# search_field.send_keys("selenium" + Keys.ENTER)
-# ActionChains(driver).move_to_element(drag).click_and_hold().move_to_element(drop).release().perform()
+#13.Close the page
+driver.close()
+
+#14.Close the browser
+driver.quit()

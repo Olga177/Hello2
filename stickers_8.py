@@ -66,8 +66,8 @@ for i in range(amount_of_products):
         if amount_of_stickers > 1:
             print("Error: product ", product_name, " has more than one sticker")
 
-#20.Close the page
+#6.Close the page
 driver.close()
 
-#21.Close the browser
+#7.Close the browser
 driver.quit()
