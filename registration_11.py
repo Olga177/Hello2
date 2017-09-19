@@ -6,7 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import Select
-
+import datetime
 
 # 1. Creating object webdriver
 driver = webdriver.Chrome()
@@ -45,9 +45,15 @@ print("State_selector_element = ", state_option_element)
 state_option_element.click()
 
 # 4c. Populate remaining required fields
+my_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+my_email = "pythonselenide" + my_date +"@gmail.com"
+my_email = my_email.replace(':', '')
+my_email = my_email.replace('-', '')
+my_email = my_email.replace(' ', '')
+print("my_email", my_email)
 email = driver.find_element_by_name("email")
 email.clear()
-email.send_keys("pythonselenide@gmail.com")
+email.send_keys(my_email)
 phone = driver.find_element_by_name("phone")
 phone.clear()
 phone.send_keys("12063713288")
@@ -64,43 +70,35 @@ print("Submit button found = ", submit_button)
 submit_button.click()
 driver.implicitly_wait(30)
 
-# 6. Find OK button and click it
-ok_button = driver.find_element_by_css_selector("button[name*=accept_cookies")
-print("ok button found = ", ok_button)
-ok_button.click()
-driver.implicitly_wait(30)
-
-# 7. Log out after account created
+# 6. Log out after account created
 logout_element = driver.find_element_by_css_selector("div#box-account.box a[href*=logout]")
 logout_element.click()
-# 8. Check that user is logged out
-print ("Headline Login is displayed on the page ", (driver.find_element_by_css_selector("h1")).text)
 
-# 9 Populate email
+
+# 7 Populate email
+driver.get("http://localhost/litecart/en/")
+driver.implicitly_wait(30)
 email = driver.find_element_by_name("email")
 email.clear()
-email.send_keys("pythonselenide@gmail.com")
+email.send_keys(my_email)
 
-# 10. Populate password
+# 8. Populate password
 password = driver.find_element_by_name("password")
 password.clear()
 password.send_keys("selenide!&&")
 
-# 11. Click Login button
+# 9. Click Login button
 login_button = driver.find_element_by_css_selector("button[name*=login]")
 print("Login button found = ", login_button)
 login_button.click()
 driver.implicitly_wait(30)
 
-# 12. Log out
+# 10. Log out
 logout_element = driver.find_element_by_css_selector("div#box-account.box a[href*=logout]")
 logout_element.click()
-# 12a. Check that user is logged out
-print ("Headline Login is displayed on the page ", (driver.find_element_by_css_selector("h1")).text)
 
-
-#13.Close the page
+# 11.Close the page
 driver.close()
 
-#14.Close the browser
+# 12.Close the browser
 driver.quit()
